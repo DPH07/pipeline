@@ -1,2 +1,19 @@
-pipeline{
+pipeline {
+    agent any
+      stages{
+        stage(STAGE1)
+        {
+            sh sleep 4
+            echo "stage1"
+        }
+        stage(STAGE2)
+        {
+            sh sleep 3
+            echo "stage1"
+        }
+      }
+        
+      }
+       
+
 }
