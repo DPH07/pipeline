@@ -1,0 +1,30 @@
+pipeline{
+    agent any{
+
+        environment{
+            GIT_CREDENTIAL='f4df1f55-bb1e-4320-a437-2113d1c27855'
+            GIT_URL='https://github.com/DPH07/dhegde71912.git'
+            GIT_BRANCH='main'
+        }
+
+        stages{
+            stage(CHECKOUT){
+                steps{
+                    script{
+                        git branch: "${env.GIT_URL}",
+                        git credential: "${env.GIT_CREDENTIAL}",
+                        git branch : "${env.GIT_BRANCH}"
+                    }
+                }
+            }
+        }
+        stage(LIST){
+            steps{
+                sh '''
+                 ls -ltr
+                 echo "$GIT_URL"
+                '''
+            }
+        }
+    }
+}
