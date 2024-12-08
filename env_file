@@ -1,5 +1,5 @@
 pipeline{
-    agent any{
+    agent any
 
         environment{
             GIT_CREDENTIAL='f4df1f55-bb1e-4320-a437-2113d1c27855'
@@ -28,5 +28,5 @@ pipeline{
             }
         }
     }
-    }
 }
+
