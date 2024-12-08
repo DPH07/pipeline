@@ -1,11 +1,11 @@
 pipeline{
     agent any
-    stages{
-        parameter{
+
             parameters {
   booleanParam description: 'boolean parameter', name: 'bool'
 }
-        }
+
+    stages{        
         stage(BOOLEAN){
             steps{
             echo "BOOLEAN: ${params.bool}"
