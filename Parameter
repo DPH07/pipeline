@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        parameter{
+            parameters {
+  booleanParam description: 'boolean parameter', name: 'bool'
+}
+        }
+        stage(BOOLEAN){
+            steps{
+            echo "BOOLEAN: ${params.bool}"
+            }
+        }
+    }
+}
