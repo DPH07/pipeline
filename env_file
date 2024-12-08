@@ -7,22 +7,23 @@ pipeline{
             GIT_BRANCH='main'
         }
 
-        stages{
-            stage(CHECKOUT){
-                steps{
-                    script{
-                        git branch: "${env.GIT_URL}",
-                        git credential: "${env.GIT_CREDENTIAL}",
-                        git branch : "${env.GIT_BRANCH}"
-                    }
+        stages {
+        stage('CHECKOUT') {
+            steps {
+                script {
+                    git branch: "${env.GIT_BRANCH}",
+                        credentialsId: "${env.GIT_CREDENTIALS}",
+                        url: "${env.GIT_URL}"
                 }
             }
-        
-        stage(LIST){
-            steps{
+        }
+
+        stage('CHECK') {
+            steps {
                 sh '''
-                 ls -ltr
-                 echo "$GIT_URL"
+                    ls -lrt
+                    echo $GIT_BRANCH
+                    env
                 '''
             }
         }
